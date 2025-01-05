@@ -7,6 +7,8 @@ namespace AgendaContatosApp
         static void Main(string[] args)
         {
            var conectionString = ConfigurationManager.ConnectionStrings["MinhaConexao"].ConnectionString;
+
+
         }
     }
 }
