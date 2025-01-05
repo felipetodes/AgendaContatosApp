@@ -25,7 +25,7 @@ namespace AgendaContatosApp
                     //Abrindo a conexão
                     conn.Open();
 
-                    string sql = "SELECT* FROM CONTATO";
+                    string sql = "SELECT * FROM CONTATO";
                     var contatos = conn.Query<ContatoED>(sql);
 
 
