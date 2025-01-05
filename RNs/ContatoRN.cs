@@ -105,13 +105,49 @@ namespace AgendaContatosApp.RNs
                     conn.Open();
 
                     string sql = "UPDATE CONTATO SET NOME = @NomeCompleto , EMAIL = @EmailContato WHERE ID = @Codigo";
+                    var qtdLinhas = conn.Execute(sql, contato);
+
+                    if (qtdLinhas <= 0)
+                        Console.WriteLine("Nenhuma linha foi alterada!");
+                    else
+                    {
+                        if (qtdLinhas == 1)
+                            Console.WriteLine("1 linha alterada!");
+                        else
+                            Console.WriteLine($"Foram alteradas {qtdLinhas} linhas(s)");
+                    }
+                }
+
+                
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Ocorreu um erro ao acessar a base de dados. {e.Message}");
+                }
+            }
+        }
+
+        public static void Deletar(int idDeletar)
+        {
+            using (IDbConnection conn = new SqlConnection(conectionString))
+            {
+                try
+                {
+                    //Abrindo a conexão
+                    conn.Open();
+
+                    string sql = "DELETE FROM CONTATO WHERE ID = @idDeletar";
+                    var qtdLinhas = conn.Execute(sql, new { idDeletar });
 
 
-
-                    conn.Execute(sql, contato);
-
-
-
+                    if (qtdLinhas <= 0)
+                        Console.WriteLine("Nenhuma linha excluída!");
+                    else
+                    {
+                        if (qtdLinhas == 1)
+                            Console.WriteLine("1 linha excluída!");
+                        else
+                            Console.WriteLine($"Foram excluídas {qtdLinhas} linhas(s)");
+                    }
                 }
                 catch (Exception e)
                 {
@@ -120,5 +156,6 @@ namespace AgendaContatosApp.RNs
             }
         }
 
+        
     }
 }

@@ -25,21 +25,24 @@ namespace AgendaContatosApp
             Console.WriteLine("Consultar por ID:");
             var contato = ContatoRN.ConsultarPorId(4);
 
-            //Inserir registro
-            var objContatoNovo = new ContatoED() {
-                NomeCompleto = "Fernanda",
-                EmailContato = "fernanda@gmail.com"
-            };
-            ContatoRN.Inserir(objContatoNovo);
+            ////Inserir registro
+            //var objContatoNovo = new ContatoED() {
+            //    NomeCompleto = "Fernanda",
+            //    EmailContato = "fernanda@gmail.com"
+            //};
+            //ContatoRN.Inserir(objContatoNovo);
 
-            //Atualizar Registro
-            var objContatoAlterar = new ContatoED()
-            {
-                Codigo = 1,
-                NomeCompleto = "Felipe Todeschini Gusatti",
-                EmailContato = "todeschini_1992@gmail.com"
-            };
-            ContatoRN.Alterar(objContatoAlterar);
+            ////Atualizar Registro
+            //var objContatoAlterar = new ContatoED()
+            //{
+            //    Codigo = 1,
+            //    NomeCompleto = "Felipe Todeschini",
+            //    EmailContato = "todeschini1992@gmail.com"
+            //};
+            //ContatoRN.Alterar(objContatoAlterar);
+
+            //Excluir Registro
+            ContatoRN.Deletar(13);
         }
 
     }
