@@ -28,6 +28,14 @@ namespace AgendaContatosApp
                     string sql = "SELECT * FROM CONTATO";
                     var contatos = conn.Query<ContatoED>(sql);
 
+                    foreach (var contato in contatos)
+                    {
+                        Console.WriteLine($"Código: {contato.Codigo}");
+                        Console.WriteLine($"Nome: {contato.NomeCompleto}");
+                        Console.WriteLine($"Email: {contato.EmailContato}");
+                        Console.WriteLine();
+                    }
+
 
                 }
                 catch (Exception e)
