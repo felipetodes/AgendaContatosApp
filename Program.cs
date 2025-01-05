@@ -18,31 +18,6 @@ namespace AgendaContatosApp
             {
                 config.AddMap(new ContatoMap());
             });
-
-            using (IDbConnection conn = new SqlConnection(conectionString))
-            {
-                try {
-                    //Abrindo a conexão
-                    conn.Open();
-
-                    string sql = "SELECT * FROM CONTATO";
-                    var contatos = conn.Query<ContatoED>(sql);
-
-                    foreach (var contato in contatos)
-                    {
-                        Console.WriteLine($"Código: {contato.Codigo}");
-                        Console.WriteLine($"Nome: {contato.NomeCompleto}");
-                        Console.WriteLine($"Email: {contato.EmailContato}");
-                        Console.WriteLine();
-                    }
-
-
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine($"Ocorreu um erro ao acessar a base de dados. {e.Message}");
-                }
-            }
         }
     }
 }
