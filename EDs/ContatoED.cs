@@ -2,10 +2,10 @@
 {
     public class ContatoED
     {
-        public int Id { get; set; }
+        public int Codigo { get; set; }
 
-        public string Nome { get; set; }
+        public string NomeCompleto { get; set; }
 
-        public string Email { get; set; }
+        public string EmailContato { get; set; }
     }
 }
