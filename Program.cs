@@ -2,7 +2,9 @@
 using System.Data;
 using System.Data.SqlClient;
 using AgendaContatosApp.EDs;
+using AgendaContatosApp.MAPs;
 using Dapper;
+using Dapper.FluentMap;
 
 namespace AgendaContatosApp
 {
@@ -12,13 +14,18 @@ namespace AgendaContatosApp
         {
            var conectionString = ConfigurationManager.ConnectionStrings["MinhaConexao"].ConnectionString;
 
+            FluentMapper.Initialize(config =>
+            {
+                config.AddMap(new ContatoMap());
+            });
+
             using (IDbConnection conn = new SqlConnection(conectionString))
             {
                 try {
                     //Abrindo a conexão
                     conn.Open();
 
-                    string sql = "SELECT ID AS CODIGO,NOME AS NomeCompleto,EMAIL AS EmailContato FROM CONTATO";
+                    string sql = "SELECT* FROM CONTATO";
                     var contatos = conn.Query<ContatoED>(sql);
 
 
